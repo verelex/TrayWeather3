@@ -46,10 +46,11 @@ namespace TrayWeather3
                 XmlDocument doc = new XmlDocument();
                 doc.LoadXml($"<?xml version=\"1.0\" encoding=\"utf-8\" ?>\r\n<opt>\r\n    <key>{opt.key}</key>\r\n    <q>{opt.q}</q>\r\n    <rph>{opt.rph}</rph>\r\n    <dhi>{opt.dhi}</dhi>\r\n</opt>");
                 XmlWriterSettings settings = new XmlWriterSettings();
-                settings.Indent = true;
+                settings.Indent = true; // отступы
                 // Save the document to a file and auto-indent the output.
                 XmlWriter writer = XmlWriter.Create(xmlFile, settings);
                 doc.Save(writer);
+                writer.Close(); // закроем файл!
             }
             catch (System.IO.IOException ex)
             {

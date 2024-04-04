@@ -40,6 +40,7 @@
             label5 = new Label();
             comboBoxHosts = new ComboBox();
             button1 = new Button();
+            checkBox1 = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)webView21).BeginInit();
             SuspendLayout();
             // 
@@ -66,6 +67,7 @@
             // 
             resources.ApplyResources(textBox1, "textBox1");
             textBox1.Name = "textBox1";
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // textBox2
             // 
@@ -106,10 +108,18 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // checkBox1
+            // 
+            resources.ApplyResources(checkBox1, "checkBox1");
+            checkBox1.Name = "checkBox1";
+            checkBox1.UseVisualStyleBackColor = true;
+            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(checkBox1);
             Controls.Add(button1);
             Controls.Add(comboBoxHosts);
             Controls.Add(label5);
@@ -141,5 +151,6 @@
         private Label label5;
         private ComboBox comboBoxHosts;
         private Button button1;
+        private CheckBox checkBox1;
     }
 }

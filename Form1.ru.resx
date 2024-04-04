@@ -124,4 +124,14 @@
   <data name="label4.Text" xml:space="preserve">
     <value>Лейбл4</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="checkBox1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>264, 29</value>
+  </data>
+  <data name="checkBox1.Text" xml:space="preserve">
+    <value>Запуск при старте Windows</value>
+  </data>
 </root>

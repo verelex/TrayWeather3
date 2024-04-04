@@ -7,6 +7,12 @@ namespace TrayWeather3
 {
     public partial class Form1 : Form
     {
+        private string AppName = "TrayWeather";
+
+        private string versionPrg = "0.3";
+
+        private bool CityPropChanged = false;
+
         private string postfixTheme = @"-dark\";
 
         private int globalHostIndex = 0;
@@ -15,7 +21,7 @@ namespace TrayWeather3
 
         private TwHosts? twHosts;
 
-        private List<TwHosts> twHostsList;
+        private List<TwHosts>? twHostsList;
 
         private bool firstTimeNavigationCompleted = true;
 
@@ -45,9 +51,10 @@ namespace TrayWeather3
                                 new ToolStripMenuItem("Setup", null, Setup),
                                 new ToolStripMenuItem("View log", null, ViewLog),
                                 new ToolStripMenuItem("Exit", null, Exit) }*/
-                    Items = { new ToolStripMenuItem("Получить", null, GetWetherNow),
+                    Items = { new ToolStripMenuItem("Получить данные", null, GetWetherNow),
                                 new ToolStripMenuItem("Настройка", null, Setup),
                                 new ToolStripMenuItem("Смотреть лог", null, ViewLog),
+                                new ToolStripMenuItem("О программе", null, About),
                                 new ToolStripMenuItem("Выход", null, Exit) }
                 },
                 Visible = true,
@@ -76,13 +83,17 @@ namespace TrayWeather3
 
         private Uri FormatHosts(int hostIndex)
         {
-            twHosts = twHostsList[hostIndex];
+            string url = string.Empty;
 
-            string url = twHosts.hst.Replace("%HST%", options.key);
+            if (twHostsList != null)
+            { 
+                twHosts = twHostsList[hostIndex];
+                url = twHosts.hst.Replace("%HST%", options.key); // options.key = city name
+            }
 
             if (twHosts.end != null)
             {
-                url += twHosts.end.Replace("%END%", options.q);
+                url += twHosts.end.Replace("%END%", options.q);  // options.q = city number for gismeteo
             }
 
             Uri uri = new Uri(url, UriKind.Absolute);
@@ -114,11 +125,11 @@ namespace TrayWeather3
 
             XMLWorker xmlWorker = new XMLWorker();
             options = new TwOptions();
-            options = xmlWorker.LoadConfig("city.conf");
+            options = xmlWorker.LoadConfig(Application.StartupPath + "city.conf");
             textBox1.Text = options.key;
             textBox2.Text = options.q;
             textBox3.Text = options.rph;
-            if(options.dhi != null)
+            if (options.dhi != null)
             {
                 globalHostIndex = Int32.Parse(options.dhi);
             }
@@ -145,7 +156,7 @@ namespace TrayWeather3
             //webView21.NavigationCompleted += new EventHandler<Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs>((sender, e) => webView21_NavigationCompleted(sender, e, twHosts));
             */
             //webView21.Source = new Uri(url, UriKind.Absolute); // setting this property (to a different value) is equivalent to calling the Navigate(String) method
-            
+
             webView21.Source = FormatHosts(globalHostIndex);
 
             SetComboBoxItems();
@@ -160,6 +171,12 @@ namespace TrayWeather3
             myTimer.Start();
 
             trayIcon.Text = twHosts.trm + "\n" + options.key;
+
+            // Данные по автозагрузке
+            RegistryKey rk = Registry.CurrentUser.OpenSubKey
+            ("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+
+            if (rk.GetValue(AppName) != null) checkBox1.Checked = true;
         }
 
         //private async void webView21_NavigationCompleted(object sender, CoreWebView2NavigationCompletedEventArgs e, TwHosts twHosts)
@@ -199,11 +216,11 @@ namespace TrayWeather3
                     break;
             }
 
-            if (firstTimeNavigationCompleted)
-            {
+            //if (firstTimeNavigationCompleted)
+            //{
                 SetTrayDegree();
-                firstTimeNavigationCompleted = false;
-            }
+                //firstTimeNavigationCompleted = false;
+            //}
             /*int x = 0;
             Int32.TryParse(webData, out x);*/
         }
@@ -285,6 +302,11 @@ namespace TrayWeather3
             Process.Start("notepad.exe", pathToFile);
         }
 
+        void About(object sender, EventArgs e)
+        {
+            MessageBox.Show("Автор: Николаев Александр\n trayweather@mynv.ru", $"{AppName} {versionPrg}");
+        }
+
         void Exit(object sender, EventArgs e)
         {
             // Hide tray icon, otherwise it will remain shown until user mouses over it
@@ -292,7 +314,7 @@ namespace TrayWeather3
             Application.Exit();
         }
 
-        private void trayIcon_Click(object sender, EventArgs e)
+        private void trayIcon_Click(object sender, EventArgs e) // TODO: show msgbox - сводка информации
         {
             var eventArgs = e as MouseEventArgs;
             switch (eventArgs.Button)
@@ -307,14 +329,24 @@ namespace TrayWeather3
         {
             if (checkTextBoxesTextChanged() || bComboBoxHostsChanged)
             {
+                /*if(CityPropChanged == true)
+                {
+                    options.key = textBox1.Text;
+                    options.q = textBox2.Text;
+                    comboBoxHosts_SelectedIndexChanged(sender, e);
+                }*/
                 DialogResult = MessageBox.Show("Сохранить конфиг?", "Опции были изменены", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
                 if (DialogResult == DialogResult.Yes)
                 {
                     options.SetAll(textBox1.Text, textBox2.Text, textBox3.Text, globalHostIndex.ToString());
                     XMLWorker xmlWorker = new XMLWorker();
-                    xmlWorker.SaveConfig("city.conf", options);
+                    xmlWorker.SaveConfig(Application.StartupPath + "city.conf", options);
+                    //
+                    webView21.CoreWebView2.Navigate(FormatHosts(globalHostIndex).ToString());
+                    trayIcon.Text = twHosts.trm + "\n" + options.key;
                 }
                 bComboBoxHostsChanged = false;
+                CityPropChanged = false;
             }
             Setup(sender, e); //hide form
         }
@@ -359,11 +391,30 @@ namespace TrayWeather3
         private void comboBoxHosts_SelectedIndexChanged(object sender, EventArgs e)
         {
             globalHostIndex = comboBoxHosts.SelectedIndex;
-            //
+            
             bComboBoxHostsChanged = true;
-            webView21.CoreWebView2.Navigate( FormatHosts(globalHostIndex).ToString() );
+            //webView21.CoreWebView2.Navigate(FormatHosts(globalHostIndex).ToString());
             //
-            trayIcon.Text = twHosts.trm + "\n" + options.key;
+            //trayIcon.Text = twHosts.trm + "\n" + options.key;
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            RegistryKey rk = Registry.CurrentUser.OpenSubKey
+            ("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+
+            if (rk != null)
+            {
+                if (checkBox1.Checked)
+                    rk.SetValue(AppName, Application.ExecutablePath);
+                else
+                    rk.DeleteValue(AppName, false);
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            CityPropChanged = true;
         }
     }
 }

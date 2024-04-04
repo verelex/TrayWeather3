@@ -14,10 +14,12 @@ namespace TrayWeather3
             m_exePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             try
             {
-                using (StreamWriter w = File.AppendText(m_exePath + "\\" + "log.txt"))
+                /*using (StreamWriter w = File.AppendText(m_exePath + "\\" + "log.txt"))
                 {
                     Log(logMessage, w);
-                }
+                }*/
+                StreamWriter w = File.AppendText(m_exePath + "\\" + "log.txt");
+                Log(logMessage, w);
             }
             catch (Exception ex)
             {
@@ -35,6 +37,7 @@ namespace TrayWeather3
                     DateTime.Now.ToLongTimeString());
                 txtWriter.Write(" :{0}", logMessage);
                 txtWriter.WriteLine(" ");
+                txtWriter.Close(); // закрываем файл
             }
             catch (Exception ex)
             {
