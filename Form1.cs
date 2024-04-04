@@ -67,7 +67,7 @@ namespace TrayWeather3
             webView21.NavigationCompleted += webView21_NavigationCompleted;
         }
 
-        private int GetCurrentTheme()
+        private int GetCurrentTheme() // dark or light theme
         {
             int ret = -1;
             try
@@ -141,7 +141,7 @@ namespace TrayWeather3
 
             minutes = SetInformation(options.rph);
 
-            xmlWorker.LoadConfig2("hosts.conf", out twHostsList);
+            xmlWorker.LoadConfig2(Application.StartupPath + "hosts.conf", out twHostsList);
 
             //
             /*twHosts = twHostsList[globalHostIndex]; // for each? if temperature is still =="" then run next
