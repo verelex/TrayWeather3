@@ -118,20 +118,131 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="webView21.Location" type="System.Drawing.Point, System.Drawing">
+    <value>887, 12</value>
+  </data>
+  <data name="webView21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>287, 283</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 84</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 25</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>id города Gismeteo.ru</value>
+  </data>
+  <data name="textBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 112</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 156</value>
+  </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 25</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Лейбл4</value>
   </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 200</value>
+  </data>
+  <data name="comboBoxHosts.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 228</value>
+  </data>
+  <data name="comboBoxHosts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>410, 33</value>
+  </data>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1038, 378</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="checkBox1.AutoSize" type="System.Boolean, mscorlib">
+  <data name="checkBoxRegAutorun.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="checkBox1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="checkBoxRegAutorun.Size" type="System.Drawing.Size, System.Drawing">
     <value>264, 29</value>
   </data>
-  <data name="checkBox1.Text" xml:space="preserve">
+  <data name="checkBoxRegAutorun.Text" xml:space="preserve">
     <value>Запуск при старте Windows</value>
+  </data>
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 25</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>id города Accuweather.com</value>
+  </data>
+  <data name="textBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>243, 31</value>
+  </data>
+  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>203, 25</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>id города Meteovesti.ru</value>
+  </data>
+  <data name="textBox5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>243, 31</value>
+  </data>
+  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>320, 25</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Погода_в_ [RP5] (предложный падеж)</value>
+  </data>
+  <data name="textBox6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>314, 31</value>
+  </data>
+  <data name="comboBoxIcoColors.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="comboBoxIcoColors.Size" type="System.Drawing.Size, System.Drawing">
+    <value>321, 33</value>
+  </data>
+  <data name="radioButton2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButton2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 29</value>
+  </data>
+  <data name="radioButton2.Text" xml:space="preserve">
+    <value>Выбрать набор</value>
+  </data>
+  <data name="radioButton1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButton1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>226, 29</value>
+  </data>
+  <data name="radioButton1.Text" xml:space="preserve">
+    <value>Иконки по умолчанию</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>446, 180</value>
+  </data>
+  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 25</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>1187, 458</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>TrayWeather3.1</value>
   </data>
 </root>

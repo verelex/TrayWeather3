@@ -4,21 +4,21 @@ namespace TrayWeather3
 {
     internal class LogWriter
     {
-        private string m_exePath = string.Empty;
+        //private string fullPath = string.Empty;
         public LogWriter()
         {
         }
 
         public void LogWrite(string logMessage)
         {
-            m_exePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            //m_exePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             try
             {
                 /*using (StreamWriter w = File.AppendText(m_exePath + "\\" + "log.txt"))
                 {
                     Log(logMessage, w);
                 }*/
-                StreamWriter w = File.AppendText(m_exePath + "\\" + "log.txt");
+                StreamWriter w = File.AppendText(Application.StartupPath + "log.txt");
                 Log(logMessage, w);
             }
             catch (Exception ex)

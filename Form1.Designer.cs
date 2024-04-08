@@ -40,8 +40,20 @@
             label5 = new Label();
             comboBoxHosts = new ComboBox();
             button1 = new Button();
-            checkBox1 = new CheckBox();
+            checkBoxRegAutorun = new CheckBox();
+            label6 = new Label();
+            textBox4 = new TextBox();
+            label7 = new Label();
+            textBox5 = new TextBox();
+            label8 = new Label();
+            textBox6 = new TextBox();
+            panel1 = new Panel();
+            comboBoxIcoColors = new ComboBox();
+            radioButton2 = new RadioButton();
+            radioButton1 = new RadioButton();
+            label9 = new Label();
             ((System.ComponentModel.ISupportInitialize)webView21).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // webView21
@@ -108,18 +120,91 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
-            // checkBox1
+            // checkBoxRegAutorun
             // 
-            resources.ApplyResources(checkBox1, "checkBox1");
-            checkBox1.Name = "checkBox1";
-            checkBox1.UseVisualStyleBackColor = true;
-            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
+            resources.ApplyResources(checkBoxRegAutorun, "checkBoxRegAutorun");
+            checkBoxRegAutorun.Name = "checkBoxRegAutorun";
+            checkBoxRegAutorun.UseVisualStyleBackColor = true;
+            checkBoxRegAutorun.CheckedChanged += checkBoxRegAutorun_CheckedChanged;
+            // 
+            // label6
+            // 
+            resources.ApplyResources(label6, "label6");
+            label6.Name = "label6";
+            // 
+            // textBox4
+            // 
+            resources.ApplyResources(textBox4, "textBox4");
+            textBox4.Name = "textBox4";
+            // 
+            // label7
+            // 
+            resources.ApplyResources(label7, "label7");
+            label7.Name = "label7";
+            // 
+            // textBox5
+            // 
+            resources.ApplyResources(textBox5, "textBox5");
+            textBox5.Name = "textBox5";
+            // 
+            // label8
+            // 
+            resources.ApplyResources(label8, "label8");
+            label8.Name = "label8";
+            // 
+            // textBox6
+            // 
+            resources.ApplyResources(textBox6, "textBox6");
+            textBox6.Name = "textBox6";
+            // 
+            // panel1
+            // 
+            resources.ApplyResources(panel1, "panel1");
+            panel1.Controls.Add(comboBoxIcoColors);
+            panel1.Controls.Add(radioButton2);
+            panel1.Controls.Add(radioButton1);
+            panel1.Name = "panel1";
+            // 
+            // comboBoxIcoColors
+            // 
+            resources.ApplyResources(comboBoxIcoColors, "comboBoxIcoColors");
+            comboBoxIcoColors.FormattingEnabled = true;
+            comboBoxIcoColors.Name = "comboBoxIcoColors";
+            // 
+            // radioButton2
+            // 
+            resources.ApplyResources(radioButton2, "radioButton2");
+            radioButton2.Name = "radioButton2";
+            radioButton2.UseVisualStyleBackColor = true;
+            radioButton2.CheckedChanged += radioButton2_CheckedChanged;
+            // 
+            // radioButton1
+            // 
+            resources.ApplyResources(radioButton1, "radioButton1");
+            radioButton1.Checked = true;
+            radioButton1.Name = "radioButton1";
+            radioButton1.TabStop = true;
+            radioButton1.UseVisualStyleBackColor = true;
+            radioButton1.CheckedChanged += radioButton1_CheckedChanged;
+            // 
+            // label9
+            // 
+            resources.ApplyResources(label9, "label9");
+            label9.Name = "label9";
             // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(checkBox1);
+            Controls.Add(label9);
+            Controls.Add(panel1);
+            Controls.Add(textBox6);
+            Controls.Add(label8);
+            Controls.Add(textBox5);
+            Controls.Add(label7);
+            Controls.Add(textBox4);
+            Controls.Add(label6);
+            Controls.Add(checkBoxRegAutorun);
             Controls.Add(button1);
             Controls.Add(comboBoxHosts);
             Controls.Add(label5);
@@ -134,6 +219,8 @@
             Name = "Form1";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)webView21).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -151,6 +238,17 @@
         private Label label5;
         private ComboBox comboBoxHosts;
         private Button button1;
-        private CheckBox checkBox1;
+        private CheckBox checkBoxRegAutorun;
+        private Label label6;
+        private TextBox textBox4;
+        private Label label7;
+        private TextBox textBox5;
+        private Label label8;
+        private TextBox textBox6;
+        private Panel panel1;
+        private ComboBox comboBoxIcoColors;
+        private RadioButton radioButton2;
+        private RadioButton radioButton1;
+        private Label label9;
     }
 }
