@@ -48,25 +48,19 @@ namespace TrayWeather3
 
         private string iconFilename = Application.StartupPath + @"icons-light\+.ico";
 
-        private MenuStrip leftClickedMenu;
-
         public Form1()
         {
-            leftClickedMenu = new MenuStrip()
-            {
-                Items = { new ToolStripMenuItem("Браузер", null, openDetailsInBrowser) }
-            };
-
             // Initialize Tray Icon
             trayIcon = new NotifyIcon()
             {
                 //Icon = new System.Drawing.Icon(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + @"\icons" + postfixTheme + "+.ico"),
                 Icon = new System.Drawing.Icon(iconFilename),
 
-                ContextMenuStrip = new ContextMenuStrip()
+                ContextMenuStrip = new ContextMenuStrip() // shows when Right clicked button
                 {
                     Items = { new ToolStripMenuItem("Получить данные", null, GetWetherNow),
                                 new ToolStripMenuItem("Настройка", null, Setup),
+                                new ToolStripMenuItem("Браузер", null, openDetailsInBrowser),
                                 new ToolStripMenuItem("Смотреть лог", null, ViewLog),
                                 new ToolStripMenuItem("О программе", null, About),
                                 new ToolStripMenuItem("Выход", null, Exit) }
@@ -75,6 +69,8 @@ namespace TrayWeather3
                 Text = "Weather",
             };
             trayIcon.Click += trayIcon_Click;
+
+            //this.Controls.Add(leftClickedMenu);
             trayIcon.MouseUp += new MouseEventHandler(trayIcon_MouseUp);
 
             InitializeComponent();
@@ -417,15 +413,14 @@ namespace TrayWeather3
 
         private void trayIcon_Click(object sender, EventArgs e) // TODO: show msgbox - сводка информации
         {
-            var eventArgs = e as MouseEventArgs;
+            /*var eventArgs = e as MouseEventArgs;
             switch (eventArgs?.Button)
             {
                 // Left click to reactivate
                 case MouseButtons.Left:
-                    //displayLocation = control.PointToScreen(position);
-                    leftClickedMenu.Show();
+                    //
                     break;
-            }
+            }*/
         }
 
         private void trayIcon_MouseUp(object sender, MouseEventArgs e)
