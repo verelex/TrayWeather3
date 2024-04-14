@@ -32,26 +32,28 @@
             webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             label1 = new Label();
             label2 = new Label();
+            textBoxCNM = new TextBox();
             textBox1 = new TextBox();
-            textBox2 = new TextBox();
             label3 = new Label();
-            textBox3 = new TextBox();
+            textBoxRPH = new TextBox();
             label4 = new Label();
             label5 = new Label();
             comboBoxHosts = new ComboBox();
             button1 = new Button();
             checkBoxRegAutorun = new CheckBox();
             label6 = new Label();
-            textBox4 = new TextBox();
+            textBox2 = new TextBox();
             label7 = new Label();
-            textBox5 = new TextBox();
+            textBox3 = new TextBox();
             label8 = new Label();
-            textBox6 = new TextBox();
+            textBox4 = new TextBox();
             panel1 = new Panel();
             comboBoxIcoColors = new ComboBox();
             radioButton2 = new RadioButton();
             radioButton1 = new RadioButton();
-            label9 = new Label();
+            labelInfo = new Label();
+            label10 = new Label();
+            textBox5 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)webView21).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -75,26 +77,26 @@
             resources.ApplyResources(label2, "label2");
             label2.Name = "label2";
             // 
+            // textBoxCNM
+            // 
+            resources.ApplyResources(textBoxCNM, "textBoxCNM");
+            textBoxCNM.Name = "textBoxCNM";
+            textBoxCNM.TextChanged += textBoxCNM_TextChanged;
+            // 
             // textBox1
             // 
             resources.ApplyResources(textBox1, "textBox1");
             textBox1.Name = "textBox1";
-            textBox1.TextChanged += textBox1_TextChanged;
-            // 
-            // textBox2
-            // 
-            resources.ApplyResources(textBox2, "textBox2");
-            textBox2.Name = "textBox2";
             // 
             // label3
             // 
             resources.ApplyResources(label3, "label3");
             label3.Name = "label3";
             // 
-            // textBox3
+            // textBoxRPH
             // 
-            resources.ApplyResources(textBox3, "textBox3");
-            textBox3.Name = "textBox3";
+            resources.ApplyResources(textBoxRPH, "textBoxRPH");
+            textBoxRPH.Name = "textBoxRPH";
             // 
             // label4
             // 
@@ -132,30 +134,30 @@
             resources.ApplyResources(label6, "label6");
             label6.Name = "label6";
             // 
-            // textBox4
+            // textBox2
             // 
-            resources.ApplyResources(textBox4, "textBox4");
-            textBox4.Name = "textBox4";
+            resources.ApplyResources(textBox2, "textBox2");
+            textBox2.Name = "textBox2";
             // 
             // label7
             // 
             resources.ApplyResources(label7, "label7");
             label7.Name = "label7";
             // 
-            // textBox5
+            // textBox3
             // 
-            resources.ApplyResources(textBox5, "textBox5");
-            textBox5.Name = "textBox5";
+            resources.ApplyResources(textBox3, "textBox3");
+            textBox3.Name = "textBox3";
             // 
             // label8
             // 
             resources.ApplyResources(label8, "label8");
             label8.Name = "label8";
             // 
-            // textBox6
+            // textBox4
             // 
-            resources.ApplyResources(textBox6, "textBox6");
-            textBox6.Name = "textBox6";
+            resources.ApplyResources(textBox4, "textBox4");
+            textBox4.Name = "textBox4";
             // 
             // panel1
             // 
@@ -187,32 +189,44 @@
             radioButton1.UseVisualStyleBackColor = true;
             radioButton1.CheckedChanged += radioButton1_CheckedChanged;
             // 
-            // label9
+            // labelInfo
             // 
-            resources.ApplyResources(label9, "label9");
-            label9.Name = "label9";
+            resources.ApplyResources(labelInfo, "labelInfo");
+            labelInfo.Name = "labelInfo";
+            // 
+            // label10
+            // 
+            resources.ApplyResources(label10, "label10");
+            label10.Name = "label10";
+            // 
+            // textBox5
+            // 
+            resources.ApplyResources(textBox5, "textBox5");
+            textBox5.Name = "textBox5";
             // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(label9);
-            Controls.Add(panel1);
-            Controls.Add(textBox6);
-            Controls.Add(label8);
             Controls.Add(textBox5);
-            Controls.Add(label7);
+            Controls.Add(label10);
+            Controls.Add(labelInfo);
+            Controls.Add(panel1);
             Controls.Add(textBox4);
+            Controls.Add(label8);
+            Controls.Add(textBox3);
+            Controls.Add(label7);
+            Controls.Add(textBox2);
             Controls.Add(label6);
             Controls.Add(checkBoxRegAutorun);
             Controls.Add(button1);
             Controls.Add(comboBoxHosts);
             Controls.Add(label5);
             Controls.Add(label4);
-            Controls.Add(textBox3);
+            Controls.Add(textBoxRPH);
             Controls.Add(label3);
-            Controls.Add(textBox2);
             Controls.Add(textBox1);
+            Controls.Add(textBoxCNM);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(webView21);
@@ -230,25 +244,27 @@
         private Microsoft.Web.WebView2.WinForms.WebView2 webView21;
         private Label label1;
         private Label label2;
+        private TextBox textBoxCNM;
         private TextBox textBox1;
-        private TextBox textBox2;
         private Label label3;
-        private TextBox textBox3;
+        private TextBox textBoxRPH;
         private Label label4;
         private Label label5;
         private ComboBox comboBoxHosts;
         private Button button1;
         private CheckBox checkBoxRegAutorun;
         private Label label6;
-        private TextBox textBox4;
+        private TextBox textBox2;
         private Label label7;
-        private TextBox textBox5;
+        private TextBox textBox3;
         private Label label8;
-        private TextBox textBox6;
+        private TextBox textBox4;
         private Panel panel1;
         private ComboBox comboBoxIcoColors;
         private RadioButton radioButton2;
         private RadioButton radioButton1;
-        private Label label9;
+        private Label labelInfo;
+        private Label label10;
+        private TextBox textBox5;
     }
 }

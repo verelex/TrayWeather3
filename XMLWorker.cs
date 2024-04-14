@@ -34,9 +34,13 @@ namespace TrayWeather3
                     {
                         opt.id3= xnode.InnerText;
                     }
-                    if (xnode.Name == "idn")   // city id n rp5
+                    if (xnode.Name == "id4")   // city id 4 rp5
                     {
-                        opt.idn = xnode.InnerText;
+                        opt.id4 = xnode.InnerText;
+                    }
+                    if (xnode.Name == "id5")   // city id 5 openweathermap
+                    {
+                        opt.id5 = xnode.InnerText;
                     }
                     if (xnode.Name == "rph") // run per hour
                     {
@@ -60,13 +64,14 @@ namespace TrayWeather3
             try
             {
                 XmlDocument doc = new XmlDocument();
-                //string XmlString = $"<?xml version=\"1.0\" encoding=\"utf-8\" ?>\r\n<opt>\r\n    <key>{opt.key}</key>\r\n    <q>{opt.q}</q>\r\n    <rph>{opt.rph}</rph>\r\n    <dhi>{opt.dhi}</dhi>    <icl>{opt.icl}</icl>\r\n</opt>";
+
                 string XmlString = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<opt>\r\n  " +
                     $"<cnm>{opt.cnm}</cnm>\r\n  " +
                     $"<id1>{opt.id1}</id1>\r\n  " +
                     $"<id2>{opt.id2}</id2>\r\n  " +
                     $"<id3>{opt.id3}</id3>\r\n  " +
-                    $"<idn>{opt.idn}</idn>\r\n  " +
+                    $"<id4>{opt.id4}</id4>\r\n  " +
+                    $"<id5>{opt.id5}</id5>\r\n  " +
                     $"<rph>{opt.rph}</rph>\r\n  " +
                     $"<dhi>{opt.dhi}</dhi>\r\n  " +
                     $"<icl>{opt.icl}</icl>\r\n</opt>";
@@ -112,9 +117,17 @@ namespace TrayWeather3
                         {
                             twHosts.end = xnode2.InnerText;
                         }
-                        if (xnode2.Name == "trm")
+                        if (xnode2.Name == "rsn")
                         {
-                            twHosts.trm = xnode2.InnerText;
+                            twHosts.rsn = xnode2.InnerText;
+                        }
+                        if (xnode2.Name == "eit")
+                        {
+                            twHosts.eit = xnode2.InnerText;
+                        }
+                        if (xnode2.Name == "tva")
+                        {
+                            twHosts.tva = xnode2.InnerText;
                         }
                     }
                     lth.Add(twHosts);

@@ -127,14 +127,27 @@
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 84</value>
   </data>
+  <data name="textBoxCNM.Size" type="System.Drawing.Size, System.Drawing">
+    <value>485, 31</value>
+  </data>
+  <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>544, 40</value>
+  </data>
+  <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>314, 31</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="textBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 25</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>id города Gismeteo.ru</value>
   </data>
-  <data name="textBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 112</value>
+  <data name="textBoxRPH.Size" type="System.Drawing.Size, System.Drawing">
+    <value>254, 31</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 156</value>
@@ -157,9 +170,11 @@
   <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
     <value>1038, 378</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="checkBoxRegAutorun.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="checkBoxRegAutorun.Location" type="System.Drawing.Point, System.Drawing">
+    <value>544, 413</value>
   </data>
   <data name="checkBoxRegAutorun.Size" type="System.Drawing.Size, System.Drawing">
     <value>264, 29</value>
@@ -176,8 +191,14 @@
   <data name="label6.Text" xml:space="preserve">
     <value>id города Accuweather.com</value>
   </data>
-  <data name="textBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>243, 31</value>
+  <data name="textBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>544, 112</value>
+  </data>
+  <data name="textBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>314, 31</value>
+  </data>
+  <data name="textBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
   </data>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -188,8 +209,14 @@
   <data name="label7.Text" xml:space="preserve">
     <value>id города Meteovesti.ru</value>
   </data>
-  <data name="textBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>243, 31</value>
+  <data name="textBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>544, 189</value>
+  </data>
+  <data name="textBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>314, 31</value>
+  </data>
+  <data name="textBox3.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
   </data>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -200,8 +227,17 @@
   <data name="label8.Text" xml:space="preserve">
     <value>Погода_в_ [RP5] (предложный падеж)</value>
   </data>
-  <data name="textBox6.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="textBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>544, 264</value>
+  </data>
+  <data name="textBox4.Size" type="System.Drawing.Size, System.Drawing">
     <value>314, 31</value>
+  </data>
+  <data name="textBox4.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>446, 180</value>
   </data>
   <data name="comboBoxIcoColors.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -227,17 +263,38 @@
   <data name="radioButton1.Text" xml:space="preserve">
     <value>Иконки по умолчанию</value>
   </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>446, 180</value>
-  </data>
-  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
+  <data name="labelInfo.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="labelInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>428, 228</value>
+  </data>
+  <data name="labelInfo.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 25</value>
   </data>
-  <data name="label9.Text" xml:space="preserve">
+  <data name="labelInfo.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="labelInfo.Text" xml:space="preserve">
     <value>label9</value>
+  </data>
+  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 25</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>id города openweathermap</value>
+  </data>
+  <data name="textBox5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>544, 341</value>
+  </data>
+  <data name="textBox5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>314, 31</value>
+  </data>
+  <data name="textBox5.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1187, 458</value>

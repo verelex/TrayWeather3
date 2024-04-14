@@ -7,7 +7,8 @@ namespace TrayWeather3
         public string? id1 { get; set; } // city id 1 gismeteo
         public string? id2 { get; set; } // city id 1 accuweather
         public string? id3 { get; set; } // city id 1 meteovesti
-        public string? idn { get; set; } // city id for RP5
+        public string? id4 { get; set; } // city id 4 for RP5
+        public string? id5 { get; set; } // city id 5 for openweathermap
         public string? rph { get; set; } // run per hour
         public string? dhi { get; set; } // default host item
         public string? icl { get; set; } // icon pack dir
@@ -18,19 +19,21 @@ namespace TrayWeather3
             id1 = String.Empty;
             id2 = String.Empty;
             id3 = String.Empty;
-            idn = String.Empty;
+            id4 = String.Empty;
+            id5 = String.Empty;
             rph = String.Empty;
             dhi = String.Empty;
             icl = String.Empty;
         }
 
-        public void SetAll(string c, string i1, string i2, string i3, string id,string r,string d, string il)
+        public void SetAll(string c, string i1, string i2, string i3, string i4, string i5,string r,string d, string il)
         {
             cnm = c;
             id1 = i1;
             id2 = i2;
             id3 = i3;
-            idn = id;
+            id4 = i4;
+            id5 = i5;
             rph = r;
             dhi = d;
             icl = il;
