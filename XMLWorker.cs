@@ -18,29 +18,37 @@ namespace TrayWeather3
                 // обход всех узлов в корневом элементе
                 foreach (XmlElement xnode in xRoot)
                 {
-                    if (xnode.Name == "cnm") // city name
-                    {
-                        opt.cnm = xnode.InnerText;
-                    }
-                    if (xnode.Name == "id1")   // city id 1 gismeteo
+                    if (xnode.Name == "id1")   // city id 1 mail.ru
                     {
                         opt.id1 = xnode.InnerText;
                     }
-                    if (xnode.Name == "id2")   // city id 2 accuweather
+                    if (xnode.Name == "id2")   // city id 2 yandex.ru
                     {
                         opt.id2 = xnode.InnerText;
                     }
-                    if (xnode.Name == "id3")   // city id 3 meteovesti
+                    if (xnode.Name == "id3")   // city id 3 gismeteo
                     {
-                        opt.id3= xnode.InnerText;
+                        opt.id3 = xnode.InnerText;
                     }
-                    if (xnode.Name == "id4")   // city id 4 rp5
+                    if (xnode.Name == "id4")   // city id 4 meteoprog
                     {
                         opt.id4 = xnode.InnerText;
                     }
-                    if (xnode.Name == "id5")   // city id 5 openweathermap
+                    if (xnode.Name == "id5")   // city id 5 accuweather
                     {
                         opt.id5 = xnode.InnerText;
+                    }
+                    if (xnode.Name == "id6")   // city id 6 meteovesti
+                    {
+                        opt.id6= xnode.InnerText;
+                    }
+                    if (xnode.Name == "id7")   // city id 7 rp5
+                    {
+                        opt.id7 = xnode.InnerText;
+                    }
+                    if (xnode.Name == "id8")   // city id 8 openweathermap
+                    {
+                        opt.id8 = xnode.InnerText;
                     }
                     if (xnode.Name == "rph") // run per hour
                     {
@@ -66,12 +74,14 @@ namespace TrayWeather3
                 XmlDocument doc = new XmlDocument();
 
                 string XmlString = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<opt>\r\n  " +
-                    $"<cnm>{opt.cnm}</cnm>\r\n  " +
                     $"<id1>{opt.id1}</id1>\r\n  " +
                     $"<id2>{opt.id2}</id2>\r\n  " +
                     $"<id3>{opt.id3}</id3>\r\n  " +
                     $"<id4>{opt.id4}</id4>\r\n  " +
                     $"<id5>{opt.id5}</id5>\r\n  " +
+                    $"<id6>{opt.id6}</id6>\r\n  " +
+                    $"<id7>{opt.id7}</id7>\r\n  " +
+                    $"<id8>{opt.id8}</id8>\r\n  " +
                     $"<rph>{opt.rph}</rph>\r\n  " +
                     $"<dhi>{opt.dhi}</dhi>\r\n  " +
                     $"<icl>{opt.icl}</icl>\r\n</opt>";

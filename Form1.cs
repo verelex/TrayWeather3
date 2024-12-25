@@ -11,7 +11,7 @@ namespace TrayWeather3
     {
         private string AppName = "TrayWeather";
 
-        private string versionPrg = "0.3";
+        private string versionPrg = "3.2";
 
         private string currentServerUrl = string.Empty;
 
@@ -107,14 +107,14 @@ namespace TrayWeather3
             if (twHostsList != null)
             {
                 twHosts = twHostsList[hostIndex];
-                url = twHosts.hst.Replace("%HST%", options.cnm); // options.cnm = city name
+                url = twHosts.hst.Replace("%HST%", options.GetElementByIndex(hostIndex)); // options.XXX = text to add
             }
 
-            if (twHosts.end != null)
+            if ( ! twHosts.end.Equals(string.Empty) ) // если добавочная строка не пустая
             {
                 url += getCityIdByHostIndex(hostIndex);
             }
-            currentServerUrl = url;
+            currentServerUrl = url; // для последующего открытия в браузере через шелл екзекут
 
             Uri uri = new Uri(url, UriKind.Absolute);
 
@@ -180,7 +180,7 @@ namespace TrayWeather3
 
             loadConfigs();
 
-            trayIcon.Text = options.cnm;
+            trayIcon.Text = options.id1;
             this.ShowInTaskbar = false;
             this.Hide();
             hidden = true;
@@ -222,14 +222,16 @@ namespace TrayWeather3
             XMLWorker xmlWorker = new XMLWorker();
             options = new TwOptions();
             options = xmlWorker.LoadConfig(Application.StartupPath + "city.conf");
-            textBoxCNM.Text = options.cnm;
-            textBox1.Text = options.id1;
-            textBox2.Text = options.id2;
-            textBox3.Text = options.id3;
-            textBox4.Text = options.id4;
-            textBox5.Text = options.id5;
+            textBoxCNM.Text = options.id1;
+            textBoxCNY.Text = options.id2;
+            textBox1.Text = options.id3;
+            textBox6.Text = options.id4;
+            textBox2.Text = options.id5;
+            textBox3.Text = options.id6;
+            textBox4.Text = options.id7;
+            textBox5.Text = options.id8;
             textBoxRPH.Text = options.rph;
-            //TODO: choose color = options.icl
+            //TODO: choose color = options.icl ------------------------------------- TO DO !
 
             if (options.dhi != null)
             {
@@ -241,7 +243,7 @@ namespace TrayWeather3
 
         private void setTrayIconText()
         {
-            trayIcon.Text = twHosts.rsn + "\n" + options.cnm;
+            trayIcon.Text = twHosts.rsn + "\n" + options.id1;
         }
 
         private void setLabelInfoText()
@@ -361,7 +363,7 @@ namespace TrayWeather3
                 {
                     temp = "Нет сети/данных";
                 }
-                lw.LogWrite($" {twHosts.rsn} {options.cnm} Температура = {temp} °C ");
+                lw.LogWrite($" {twHosts.rsn} {options.id1} Температура = {temp} °C ");
 
                 string s = string.Empty;
                 if (!(temperature.StartsWith("-"))) // if T >= 0
@@ -452,7 +454,9 @@ namespace TrayWeather3
                 if (DialogResult == DialogResult.Yes)
                 {
                     options.SetAll(textBoxCNM.Text,
+                                   textBoxCNY.Text,
                                    textBox1.Text,
+                                   textBox6.Text,
                                    textBox2.Text,
                                    textBox3.Text,
                                    textBox4.Text,
@@ -475,12 +479,14 @@ namespace TrayWeather3
 
         private bool checkTextBoxesTextChanged()
         {
-            if (String.Equals(options.cnm, textBoxCNM.Text) &&
-                String.Equals(options.id1, textBox1.Text) &&
-                String.Equals(options.id2, textBox2.Text) &&
-                String.Equals(options.id3, textBox3.Text) &&
-                String.Equals(options.id4, textBox4.Text) &&
-                String.Equals(options.id5, textBox5.Text) &&
+            if (String.Equals(options.id1, textBoxCNM.Text) &&
+                String.Equals(options.id2, textBoxCNY.Text) &&
+                String.Equals(options.id3, textBox1.Text) &&
+                String.Equals(options.id4, textBox6.Text) &&
+                String.Equals(options.id5, textBox2.Text) &&
+                String.Equals(options.id6, textBox3.Text) &&
+                String.Equals(options.id7, textBox4.Text) &&
+                String.Equals(options.id8, textBox5.Text) &&
                 String.Equals(options.rph, textBoxRPH.Text))
             {
                 return false;

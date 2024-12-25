@@ -54,6 +54,10 @@
             labelInfo = new Label();
             label10 = new Label();
             textBox5 = new TextBox();
+            label9 = new Label();
+            textBoxCNY = new TextBox();
+            label11 = new Label();
+            textBox6 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)webView21).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -204,10 +208,34 @@
             resources.ApplyResources(textBox5, "textBox5");
             textBox5.Name = "textBox5";
             // 
+            // label9
+            // 
+            resources.ApplyResources(label9, "label9");
+            label9.Name = "label9";
+            // 
+            // textBoxCNY
+            // 
+            resources.ApplyResources(textBoxCNY, "textBoxCNY");
+            textBoxCNY.Name = "textBoxCNY";
+            // 
+            // label11
+            // 
+            resources.ApplyResources(label11, "label11");
+            label11.Name = "label11";
+            // 
+            // textBox6
+            // 
+            resources.ApplyResources(textBox6, "textBox6");
+            textBox6.Name = "textBox6";
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(textBox6);
+            Controls.Add(label11);
+            Controls.Add(textBoxCNY);
+            Controls.Add(label9);
             Controls.Add(textBox5);
             Controls.Add(label10);
             Controls.Add(labelInfo);
@@ -266,5 +294,9 @@
         private Label labelInfo;
         private Label label10;
         private TextBox textBox5;
+        private Label label9;
+        private TextBox textBoxCNY;
+        private Label label11;
+        private TextBox textBox6;
     }
 }
