@@ -107,7 +107,7 @@ namespace TrayWeather3
             if (twHostsList != null)
             {
                 twHosts = twHostsList[hostIndex];
-                url = twHosts.hst.Replace("%HST%", options.GetElementByIndex(hostIndex)); // options.XXX = text to add
+                url = twHosts.hst.Replace("%HST%", options.GetElementByIndex(hostIndex));
             }
 
             if ( ! twHosts.end.Equals(string.Empty) ) // если добавочная строка не пустая
@@ -121,7 +121,7 @@ namespace TrayWeather3
             return uri;
         }
 
-        private string getCityIdByHostIndex(int idx)
+        private string getCityIdByHostIndex(int idx) // формируем вторую строку (окончание адреса)
         {
             string ret = string.Empty;
             string id = string.Empty;
@@ -129,31 +129,20 @@ namespace TrayWeather3
             switch (idx)
             {
                 case 2:
-                    id = options?.id1;
+                    ret = options?.id3; // gismeteo second string complete
                     break;
 
                 case 4:
-                    id = options?.id2;
-                    break;
-
-                case 5:
-                    id = options?.id3;
-                    break;
-
-                case 6:
-                    id = options?.id4;
-                    break;
-
-                case 7:
-                    id = options?.id5;
+                    id = options?.id5; // accuweather only hack 
+                    int value;
+                    int.TryParse(string.Join("", id?.Where(c => char.IsDigit(c))), out value);
+                    ret = twHosts?.end?.Replace($"%END{idx+1}%", value.ToString());
                     break;
 
                 default:
                     ret = string.Empty;
                     break;
             }
-            ret = twHosts?.end?.Replace($"%END{idx}%", id);
-
             return ret;
         }
 
