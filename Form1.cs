@@ -13,6 +13,8 @@ namespace TrayWeather3
 
         private string versionPrg = "3.2";
 
+        private string iconPackName = "default";
+
         private string currentServerUrl = string.Empty;
 
         private bool CityPropChanged = false;
@@ -21,7 +23,7 @@ namespace TrayWeather3
 
         private int globalHostIndex = 0;
 
-        private bool bComboBoxHostsChanged = false;
+        private bool bComboBoxHostsChanged = false, bRadioButtonsChanged = false;
 
         private TwHosts? twHosts;
 
@@ -43,7 +45,7 @@ namespace TrayWeather3
 
         private TwOptions? options;
 
-        private string iconFilename = Application.StartupPath + @"icons-light\+.ico";
+        private string iconFilename = Application.StartupPath + @"q.ico"; // startup unknown temperature
 
         public Form1()
         {
@@ -148,26 +150,33 @@ namespace TrayWeather3
 
         private void SetPostfixThemeString()
         {
-            // Detect dark/light mode
-            int theme = GetCurrentTheme();
+            if (iconPackName.Equals("default")) // using standard icons
+            {
+                // Detect dark/light mode
+                int theme = GetCurrentTheme();
 
-            if (theme == 1)
-            {
-                postfixTheme = @"-dark\";
+                if (theme == 1)
+                {
+                    postfixTheme = @"-dark\"; // describe path
+                }
+                if (theme == 0)
+                {
+                    postfixTheme = @"-light\";
+                }
             }
-            if (theme == 0)
+            else // using custom icons
             {
-                postfixTheme = @"-light\";
+                postfixTheme = $"-{iconPackName}\\";
             }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            SetPostfixThemeString();
-
             webView21.EnsureCoreWebView2Async();
 
             loadConfigs();
+
+            SetPostfixThemeString();
 
             trayIcon.Text = options.id1;
             this.ShowInTaskbar = false;
@@ -220,7 +229,10 @@ namespace TrayWeather3
             textBox4.Text = options.id7;
             textBox5.Text = options.id8;
             textBoxRPH.Text = options.rph;
-            //TODO: choose color = options.icl ------------------------------------- TO DO !
+            if(!options.icl.Equals("default")) // if config have custom icon pack
+            {
+                iconPackName = options.icl;
+            }
 
             if (options.dhi != null)
             {
@@ -369,7 +381,7 @@ namespace TrayWeather3
             }
             else
             {
-                string IcoFullPath = Application.StartupPath + "icons" + postfixTheme + "error1.ico";
+                string IcoFullPath = Application.StartupPath + "err.ico";
                 //string IcoFullName = System.IO.Path.GetDirectoryName(Application.ExecutablePath) + @"\icons" + postfixTheme + "error1.ico";
                 //MessageBox.Show(IcoFullName);
                 trayIcon.Icon = new System.Drawing.Icon(IcoFullPath);
@@ -435,9 +447,9 @@ namespace TrayWeather3
             }*/
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) // close Options window
         {
-            if (checkTextBoxesTextChanged() || bComboBoxHostsChanged)
+            if (checkTextBoxesTextChanged() || bComboBoxHostsChanged || bRadioButtonsChanged)
             {
                 DialogResult = MessageBox.Show("Сохранить конфиг?", "Опции были изменены", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
                 if (DialogResult == DialogResult.Yes)
@@ -452,7 +464,7 @@ namespace TrayWeather3
                                    textBox5.Text,
                                    textBoxRPH.Text,
                                    globalHostIndex.ToString(),
-                                   "def");
+                                   iconPackName);
                     XMLWorker xmlWorker = new XMLWorker();
                     xmlWorker.SaveConfig(Application.StartupPath + "city.conf", options);
                     //
@@ -540,19 +552,27 @@ namespace TrayWeather3
             //CityPropChanged = true;
         }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        private void radioButton2_CheckedChanged(object sender, EventArgs e) // custom icons
         {
             comboBoxIcoColors.Enabled = true;
             comboBoxIcoColors.Items.Clear();
-            comboBoxIcoColors.Items.Add("def");
-            comboBoxIcoColors.Items.Add("red");
+            comboBoxIcoColors.Items.Add("default");
             comboBoxIcoColors.Items.Add("yellow");
-            comboBoxIcoColors.SelectedIndex = 0;
+            if (iconPackName.Equals("default"))
+            {
+                comboBoxIcoColors.SelectedIndex = 0; // standart icons
+            }
+            else
+            {
+                comboBoxIcoColors.SelectedIndex = 1; // custom icons
+            }
+            bRadioButtonsChanged = true;
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void radioButton1_CheckedChanged(object sender, EventArgs e) // default icons
         {
-            comboBoxIcoColors.Enabled = false;
+            comboBoxIcoColors.Enabled = false; // иконки по умолчанию
+            bRadioButtonsChanged = true;
         }
     }
 }
