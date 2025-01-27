@@ -131,7 +131,7 @@ namespace TrayWeather3
             switch (idx)
             {
                 case 2:
-                    ret = options?.id3; // gismeteo second string complete
+                    ret = twHosts.end; // gismeteo second string complete
                     break;
 
                 case 4:
