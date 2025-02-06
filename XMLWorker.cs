@@ -1,4 +1,5 @@
 ﻿using System.Xml;
+using System.Xml.Linq;
 
 namespace TrayWeather3
 {
@@ -64,6 +65,11 @@ namespace TrayWeather3
                     }
                 }
             }
+            //
+            doc = null;
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            //
             return opt;
         }
 
@@ -88,11 +94,20 @@ namespace TrayWeather3
 
                 doc.LoadXml(XmlString);
                 XmlWriterSettings settings = new XmlWriterSettings();
+                settings.Async = false;
                 settings.Indent = true; // отступы
                 // Save the document to a file and auto-indent the output.
                 XmlWriter writer = XmlWriter.Create(xmlFile, settings);
                 doc.Save(writer);
-                writer.Close(); // закроем файл, иначе ошибка!
+                //writer.Close(); // закроем поток, иначе ошибка!
+                writer.Dispose();
+                //
+                writer = null;
+                settings = null;
+                doc = null;
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                //
             }
             catch (System.IO.IOException ex)
             {
@@ -143,6 +158,11 @@ namespace TrayWeather3
                     lth.Add(twHosts);
                 }
             }
+            //
+            doc = null;
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            //
         }
     }
 }
