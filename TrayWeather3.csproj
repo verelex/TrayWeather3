@@ -8,6 +8,17 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+<PropertyGroup>
+    <!-- Вот это самое главное -->
+    <PublishSingleFile>true</PublishSingleFile>
+    <!-- Это чтобы тащить за собой рантайм До .NET 6 будут рядом лежать нативные библиотеки jit-а и сборщика мусора-->
+    <SelfContained>true</SelfContained>
+    <!-- Это необходимо, чтобы сборщик понимал, для какой ОС нужен экзешник -->
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <!-- Это чтобы ускорить запуск -->
+    <PublishReadyToRun>true</PublishReadyToRun>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2415-prerelease" />
   </ItemGroup>

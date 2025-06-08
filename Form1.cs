@@ -4,6 +4,7 @@ using System.Diagnostics;
 using Microsoft.Win32;
 using System.Security.Policy;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace TrayWeather3
 {
@@ -11,7 +12,7 @@ namespace TrayWeather3
     {
         private string AppName = "TrayWeather";
 
-        private string versionPrg = "3.2";
+        private string versionPrg = "3.4";
 
         private string iconPackName = "default";
 
@@ -219,7 +220,7 @@ namespace TrayWeather3
         {
             XMLWorker xmlWorker = new XMLWorker();
             options = new TwOptions();
-            options = xmlWorker.LoadConfig(Application.StartupPath + "city.conf");
+            options = xmlWorker.LoadConfig1(Application.StartupPath + "city.conf");
             textBoxCNM.Text = options.id1;
             textBoxCNY.Text = options.id2;
             textBox1.Text = options.id3;
@@ -314,6 +315,15 @@ namespace TrayWeather3
             myScript = $"document.documentElement.getElementsByClassName('{twHosts.cls}')[{twHosts.eit}].innerText";
             webData = await webView21.ExecuteScriptAsync(myScript);
             temperature = webData.Trim(twHosts.tva.ToCharArray()).Replace('−', '-');
+
+            if (temperature.IndexOf('.', StringComparison.CurrentCulture) != -1)
+            {
+                //decimal decimalVal = System.Convert.ToDecimal(temperature);
+                float f = float.Parse(temperature, CultureInfo.InvariantCulture.NumberFormat);
+                int result = (int)Math.Round(f);
+                temperature = result.ToString();
+                //decimal standard = decimal.Round(value, N, MidpointRounding.AwayFromZero);
+            }
 
             if (firstTimeNavigationCompleted)
             {
@@ -466,7 +476,7 @@ namespace TrayWeather3
                                    globalHostIndex.ToString(),
                                    iconPackName);
                     XMLWorker xmlWorker = new XMLWorker();
-                    xmlWorker.SaveConfig(Application.StartupPath + "city.conf", options);
+                    xmlWorker.SaveConfig1(Application.StartupPath + "city.conf", options);
                     //
                     webView21.CoreWebView2.Navigate(FormatHosts(globalHostIndex).ToString());
                     setTrayIconText();

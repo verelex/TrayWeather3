@@ -7,7 +7,7 @@ namespace TrayWeather3
     {
         public XMLWorker() { }
 
-        public TwOptions LoadConfig(string xmlFile)
+        public TwOptions LoadConfig1(string xmlFile)
         {
             XmlDocument doc = new XmlDocument();
             doc.Load(xmlFile);
@@ -73,7 +73,7 @@ namespace TrayWeather3
             return opt;
         }
 
-        public void SaveConfig(string xmlFile, TwOptions opt)
+        public void SaveConfig1(string xmlFile, TwOptions opt)
         {
             try
             {
