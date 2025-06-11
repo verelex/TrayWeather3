@@ -318,11 +318,9 @@ namespace TrayWeather3
 
             if (temperature.IndexOf('.', StringComparison.CurrentCulture) != -1)
             {
-                //decimal decimalVal = System.Convert.ToDecimal(temperature);
                 float f = float.Parse(temperature, CultureInfo.InvariantCulture.NumberFormat);
                 int result = (int)Math.Round(f);
                 temperature = result.ToString();
-                //decimal standard = decimal.Round(value, N, MidpointRounding.AwayFromZero);
             }
 
             if (firstTimeNavigationCompleted)
